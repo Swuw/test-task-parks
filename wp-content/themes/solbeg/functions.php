@@ -32,7 +32,7 @@ add_action( 'after_setup_theme', 'solbeg' );
 function solbeg_style() {
     wp_enqueue_style(
         'main_style',
-        get_template_directory_uri() . '/assets/css/print.css',
+        get_template_directory_uri() . '/assets/css/main.css',
         array(),
         wp_get_theme()->get( 'Version' ),
         'print'
@@ -42,7 +42,7 @@ function solbeg_style() {
 function solbeg_script() {
     wp_enqueue_script(
         'main_script',
-        get_template_directory_uri() . '/assets/css/print.css',
+        get_template_directory_uri() . '/assets/script/main.js',
         array( 'wp-blocks', 'wp-dom' ),
         wp_get_theme()->get( 'Version' ),
         true
