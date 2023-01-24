@@ -81,6 +81,7 @@ function my_custom_post() {
         'rewrite'     => array( 'slug' => 'polish-national-parks', 'with_front' => true ),
         'supports'      => array( 'title', 'editor', 'thumbnail', 'custom-fields'),
         'has_archive'   => true,
+        'menu_icon'   => 'dashicons-location-alt',
         'taxonomies' => array('post_tag')
     );
     register_taxonomy('park_category', array('parks'), array(
