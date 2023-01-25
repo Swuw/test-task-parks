@@ -34,24 +34,32 @@ add_action( 'after_setup_theme', 'solbeg' );
 
 function solbeg_style() {
     wp_enqueue_style(
-        'main_style',
+        'main-custom-style',
         get_template_directory_uri() . '/assets/css/main.css',
         array(),
-        wp_get_theme()->get( 'Version' ),
-        'print'
+        1.2,
+        'all'
     );
 }
 
 function solbeg_script() {
     wp_enqueue_script(
-        'main_script',
+        'main-custom-script',
         get_template_directory_uri() . '/assets/script/main.js',
-        array( 'wp-blocks', 'wp-dom' ),
+        array( '', '' ),
         wp_get_theme()->get( 'Version' ),
         true
     );
 }
 
+function wpbootstrap_enqueue_styles() {
+    wp_enqueue_style(
+        'bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
+    );
+}
+
+add_action('wp_enqueue_scripts', 'wpbootstrap_enqueue_styles');
 add_action( 'wp_enqueue_scripts', 'solbeg_style' );
 add_action( 'wp_enqueue_scripts', 'solbeg_script' );
 
@@ -78,7 +86,7 @@ function my_custom_post() {
         'description'   => 'parks',
         'public'        => true,
         'menu_position' => 4,
-        'rewrite'     => array( 'slug' => 'polish-national-parks', 'with_front' => true ),
+        'rewrite'     => array( 'slug' => 'national-polish-parks', 'with_front' => true ),
         'supports'      => array( 'title', 'editor', 'thumbnail', 'custom-fields'),
         'has_archive'   => true,
         'menu_icon'   => 'dashicons-location-alt',
@@ -96,3 +104,7 @@ function my_custom_post() {
     flush_rewrite_rules(false);
 }
 add_action( 'init', 'my_custom_post' );
+
+//AJAX
+
+add_action( 'wp_ajax_nopriv_post_ajax', 'taxes_ajax' );
