@@ -1,41 +1,65 @@
 
-(function ($) {
-
-    $(document).on('click', '.add-to-cart', function (e) {
+jQuery(function($) {
+    $(document).on('click', '.categories,.pagination', function(e) {
         e.preventDefault();
 
         let thisbutton = $(this);
+        let activeCategory = $('.green-hover');
+        let ajax_url = '/wp-admin/admin-ajax.php';
 
-        let id = thisbutton.val();
-        let product_qty = document.querySelector('.add-to-cart').getAttribute('data-quantity') || 1;
-        let product_id = thisbutton.data('product_id');
+        if(thisbutton.hasClass('categories')){
+            var id = thisbutton.attr('data-id');
+            var paged = 1;
 
-        let data = {
-            action: 'woocommerce_ajax_add_to_cart',
-            product_id: product_id,
-            product_sku: '',
-            quantity: product_qty,
-            // variation_id: variation_id,
-        };
+            $.ajax({
+                type: 'POST',
+                url: ajax_url,
+                data: {
+                    action: 'post_park_load',
+                    category_id: id,
+                    paged: paged
+                },
+                beforeSend: function () {
+                    activeCategory.removeClass('green-hover');
+                    thisbutton.addClass('loading');
+                },
+                success: function (data) {
+                    thisbutton.removeClass('loading');
+                    $(".cards-container").empty();
+                    thisbutton.addClass('green-hover');
+                    $(".cards-container").append(data);
+                },
+                complete: function () {
+                    // $('.loading').remove();
+                }
+            });
+        } else if(thisbutton.hasClass('pagination')){
+            var id = activeCategory.attr('data-id');
+            var paged = thisbutton.attr('data-page');
 
-        $(document.body).trigger('adding_to_cart', [data]);
+            $.ajax({
+                type: 'POST',
+                url: ajax_url,
+                data: {
+                    action: 'post_park_load',
+                    category_id: id,
+                    paged: paged
+                },
+                beforeSend: function () {
 
-        $.ajax({
-            type: 'post',
-            url: wc_add_to_cart_params.ajax_url,
-            data: data,
-            beforeSend: function (response) {
-                thisbutton.removeClass('added').addClass('loading');
-            },
-            complete: function (response) {
-                thisbutton.addClass('added').removeClass('loading');
-            },
-            success: function (response) {
-                $( ".cart-wrapper" ).empty();
-                $( ".cart-wrapper" ).append(response);
-            },
-        });
+                    thisbutton.addClass('loading');
+                },
+                success: function (data) {
+                    thisbutton.removeClass('loading');
+                    $(".cards-container").empty();
+
+                    $(".cards-container").append(data);
+                },
+                complete: function () {
+                    // $('.loading').remove();
+                }
+            });
+        }
+
     });
-
-
-})(jQuery);
+});

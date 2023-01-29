@@ -6,17 +6,22 @@ a {
     font-size: 1rem;
     line-height: 1.4375rem;
     text-align: center;
-    color: #edf8ff;
+    color: #1d293f;;
     text-decoration: none;
-    z-index: 1; }
+    z-index: 1;
+}
+
 a:hover {
     font-family: Ubuntu;
     text-decoration: none;
     color: #edf8ff;
-    opacity: 1; }
+    opacity: 1;
+}
+
 a :active {
     text-decoration: none;
-    color: #edf8ff; }
+    color: #edf8ff;
+}
 
 h1 {
     font-weight: bold;
@@ -25,17 +30,23 @@ h1 {
     letter-spacing: 0.0625rem;
     color: #1d293f;
     margin-bottom: 3.125rem;
-    opacity: 1; }
+    opacity: 1;
+}
+
 @media (max-width: 991px) {
     h1 {
         margin-bottom: 1.875rem;
         font-size: 4.0625rem;
-        line-height: 3.75rem; } }
+        line-height: 3.75rem;
+    }
+}
+
 @media (max-width: 767px) {
     h1 {
         margin-bottom: 1.875rem;
         font-size: 2.5rem;
-        line-height: 2.8125rem; }
+        line-height: 2.8125rem;
+    }
 }
 
 p {
@@ -46,7 +57,7 @@ p {
     margin-inline-end: 0px;
 }
 
-.padding {
+.margin {
     margin-bottom: 1.875rem;
     margin-top: 1.875rem;
 }
@@ -58,10 +69,12 @@ button {
     color: #ffffff;
     display: flex;
     align-items: center;
-    width: auto; }
+    width: auto;
+}
 
 button:focus {
-    outline: none; }
+    outline: none;
+}
 
 .button-greener {
     padding: 1rem 2rem;
@@ -74,10 +87,12 @@ button:focus {
     display: flex;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.0.125rem;
+    letter-spacing: 0.0 .125rem;
     transition: 0.5s;
     width: fit-content;
-    position: initial; }
+    position: initial;
+}
+
 @media (max-width: 767px) {
     .button-greener {
         font-size: 1.25rem;
@@ -85,18 +100,25 @@ button:focus {
         display: flex;
         align-items: center;
         text-align: center;
-        letter-spacing: 0.0.125rem;
-        padding: 0; }
+        letter-spacing: 0.0 .125rem;
+        padding: 0;
+    }
+
     .button-greener p {
         width: 9.375rem;
         height: 3.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 1; } }
+        z-index: 1;
+    }
+}
+
 .button-greener:hover {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
-    transition: 0.5s; }
+    transition: 0.5s;
+}
+
 .button-greener-sm {
     border-radius: 0.1875rem;
     padding: 0.5rem 1.5rem;
@@ -108,13 +130,16 @@ button:focus {
     font-weight: bold;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.0.125rem;
+    letter-spacing: 0.0 .125rem;
     transition: 0.5s;
     height: 2.5rem;
-    min-width: 7.6875rem; }
+    min-width: 7.6875rem;
+}
+
 .button-greener-sm:hover {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
-    transition: 0.5s; }
+    transition: 0.5s;
+}
 
 .button-green {
     padding: 1rem 2rem;
@@ -127,10 +152,12 @@ button:focus {
     display: flex;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.0.125rem;
+    letter-spacing: 0.0 .125rem;
     transition: 0.5s;
     width: fit-content;
-    position: initial; }
+    position: initial;
+}
+
 @media (max-width: 767px) {
     .button-green {
         font-size: 1.25rem;
@@ -138,12 +165,17 @@ button:focus {
         display: flex;
         align-items: center;
         text-align: center;
-        letter-spacing: 0.0.125rem;
+        letter-spacing: 0.0 .125rem;
         padding: 0.875rem 1.375rem;
-        z-index: 1; } }
+        z-index: 1;
+    }
+}
+
 .button-green:hover {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
-    transition: 0.5s; }
+    transition: 0.5s;
+}
+
 .button-green-sm {
     border-radius: 0.1875rem;
     padding: 0.5rem 1.5rem;
@@ -155,10 +187,12 @@ button:focus {
     font-weight: bold;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.0.125rem;
+    letter-spacing: 0.0 .125rem;
     transition: 0.5s;
     height: 2.5rem;
-    min-width: 7.6875rem; }
+    min-width: 7.6875rem;
+}
+
 .button-green-sm:hover {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
     transition: 0.5s;
@@ -173,10 +207,13 @@ button:focus {
 .post {
     padding-bottom: 12.5rem;
 }
+
 @media (max-width: 767px) {
     .post {
-        padding-bottom: 12.5rem; }
+        padding-bottom: 12.5rem;
+    }
 }
+
 .post-content {
     display: flex;
     height: 40rem;
@@ -186,10 +223,13 @@ button:focus {
     margin-bottom: 2.75rem;
     background-size: 100%;
 }
+
 @media (max-width: 767px) {
     .post-content {
-        margin-bottom: 2.5rem; }
+        margin-bottom: 2.5rem;
+    }
 }
+
 .post-tab {
     color: #FF9900;
     opacity: 0.6;
@@ -201,9 +241,11 @@ button:focus {
     line-height: 1.4375rem;
     margin-bottom: 0.625rem;
 }
+
 .post h2 {
     color: #1D293F;
 }
+
 .post-card {
     transition: 0.3s;
     box-shadow: 0rem 1.25rem 3.125rem -1.25rem rgba(0, 64, 84, 0.25);
@@ -212,37 +254,49 @@ button:focus {
     overflow: hidden;
     margin-bottom: 2.5rem;
 }
+
 @media (max-width: 767px) {
     .post-card {
-        margin-bottom: 1.875rem; }
+        margin-bottom: 1.875rem;
+    }
 }
+
 .post-card-img {
     width: 21.625rem;
     height: 12.75rem;
+    /*width: 18.75rem;*/
+    /*height: 12.5rem;*/
     object-fit: cover;
 }
+
 @media (max-width: 991px) {
     .post-card-img {
         width: 43.4375rem;
         height: 26.0625rem;
-        object-fit: cover; }
+        object-fit: cover;
+    }
 }
+
 .post-card:hover {
     box-shadow: none;
     transition: 0.3s;
 }
+
 .post-card-text {
     padding: 1.25rem 1.875rem 1.875rem 1.875rem;
 }
+
 @media (max-width: 767px) {
     .post-card-text {
         padding: 0.9375rem 1.25rem 1.25rem 1.25rem;
     }
 }
+
 .post-card-text-caracter {
     display: flex;
     flex-wrap: wrap;
 }
+
 .post-card-text-caracter > * {
     margin-right: 0.625rem;
     padding: 0.25rem 0.5rem;
@@ -255,6 +309,7 @@ button:focus {
     border-radius: 2.0625rem;
     margin-bottom: 0.625rem;
 }
+
 .post-card-text-title {
     font-weight: bold;
     font-size: 1.5rem;
@@ -263,6 +318,7 @@ button:focus {
     margin-bottom: 1.25rem;
     min-height: 4.25rem;
 }
+
 @media (max-width: 767px) {
     .post-card-text-title {
         font-size: 1.375rem;
@@ -270,16 +326,22 @@ button:focus {
         margin-bottom: 0.9375rem;
     }
 }
+
 .post-button {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
+
 @media (max-width: 767px) {
     .post-button {
         align-items: flex-start;
     }
+}
+
+.static {
+    opacity: 0;
 }
 
 .button-green-ligth-var {
@@ -291,17 +353,25 @@ button:focus {
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.375rem;
-    padding: 0.3125rem; }
+    padding: 0.3125rem;
+}
+
 .button-green-ligth-var p {
     background: linear-gradient(44.64deg, #11a49b 0%, #90fc8e 189.77%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; }
+    -webkit-text-fill-color: transparent;
+}
+
 .button-green-ligth-var:hover p {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; }
+    -webkit-text-fill-color: transparent;
+}
+
 .button-green-ligth-var:hover .static {
-    opacity: 0; }
+    opacity: 1;
+}
+
 .button-green-ligth-var:hover .hover {
     opacity: 1;
 }
@@ -312,25 +382,31 @@ button:focus {
     align-items: center;
     justify-content: center;
 }
+
 .case-pagination button {
     font-size: 1rem;
     line-height: 1.4375rem;
     text-align: right;
     color: #1d293f;
     opacity: 0.5;
-    margin: 0 0.5rem; }
+    margin: 0 0.5rem;
+}
+
 .case-pagination button:active {
-    color: #11A49B; }
+    color: #11A49B;
+}
+
 .case-pagination-number {
     display: flex;
-    align-items: center; }
+    align-items: center;
+}
 
 .actual-page {
     color: #11A49B !important;
 }
 
 .categories {
-    margin-right: 0.625rem;
+    width: 75%;
     padding: 0.25rem 0.5rem;
     text-align: center;
     font-size: 1rem;
@@ -343,9 +419,57 @@ button:focus {
     margin-bottom: 0.625rem;
 }
 
+.categories span {
+    width: 100%;
+    text-align: center;
+}
+
 .categories:hover {
     background: linear-gradient(46.19deg, #11a49b 5.66%, #90fc8e 94.35%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
+}
+
+a.pagination {
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    cursor: pointer;
+}
+
+a.pagination:hover {
+    color: #11A49B;;
+}
+
+.green-hover {
+    background: linear-gradient(44.64deg, #11a49b 0%, #90fc8e 189.77%);
+    color: #edf8ff;
+    transition: 0.3s;
+}
+
+.description {
+    height: 85px;
+    color: #1d293f;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.loading {
+    color: #11A49B;
+}
+
+.post-name {
+    color: #abb8c3;
+}
+
+.category-margin {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+.button-back {
+    margin: 0;
 }

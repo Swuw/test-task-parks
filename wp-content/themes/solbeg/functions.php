@@ -32,6 +32,13 @@ if ( ! function_exists( 'solbeg' ) ) {
 
 add_action( 'after_setup_theme', 'solbeg' );
 
+function wpbootstrap_enqueue_styles() {
+    wp_enqueue_style(
+        'bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
+    );
+}
+
 function solbeg_style() {
     wp_enqueue_style(
         'main-custom-style',
@@ -42,30 +49,48 @@ function solbeg_style() {
     );
 }
 
-function solbeg_script() {
+function jquery_enqueue_script() {
     wp_enqueue_script(
-        'main-custom-script',
-        get_template_directory_uri() . '/assets/script/main.js',
-        array( '', '' ),
+        'jquery-3.6.3',
+        'https://code.jquery.com/jquery-3.6.0.min.js',
+        '',
         wp_get_theme()->get( 'Version' ),
         true
     );
 }
 
-function wpbootstrap_enqueue_styles() {
-    wp_enqueue_style(
-        'bootstrap',
-        'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
+function ajax_script() {
+    wp_enqueue_script(
+        'ajax',
+        get_template_directory_uri() . '/assets/script/ajax.js',
+        '',
+        wp_get_theme()->get( 'Version' ),
+        true
+    );
+    wp_localize_script( 'ajax-script', '',
+        array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+}
+
+function solbeg_script() {
+    wp_enqueue_script(
+        'main-custom-script',
+        get_template_directory_uri() . '/assets/script/main.js',
+        '',
+        wp_get_theme()->get( 'Version' ),
+        true
     );
 }
 
 add_action('wp_enqueue_scripts', 'wpbootstrap_enqueue_styles');
-add_action( 'wp_enqueue_scripts', 'solbeg_style' );
-add_action( 'wp_enqueue_scripts', 'solbeg_script' );
+add_action('wp_enqueue_scripts', 'solbeg_style' );
+
+add_action('wp_enqueue_scripts', 'jquery_enqueue_script');
+add_action('wp_enqueue_scripts', 'ajax_script');
+add_action('wp_enqueue_scripts', 'solbeg_script' );
 
 // Create custom parks post type
 
-function my_custom_post() {
+function parks_post() {
     $labels = array(
         'name'               => _x( 'Parks', 'post type general name' ),
         'singular_name'      => _x( 'Parks', 'post type singular name' ),
@@ -103,8 +128,46 @@ function my_custom_post() {
     register_post_type( 'parks', $args );
     flush_rewrite_rules(false);
 }
-add_action( 'init', 'my_custom_post' );
+add_action( 'init', 'parks_post' );
 
 //AJAX
 
-add_action( 'wp_ajax_nopriv_post_ajax', 'taxes_ajax' );
+function post_park_load() {
+    if(!empty($_POST['category_id'])) {
+        $args = array(
+            'post_type' => 'parks',
+            'post_status' => 'publish',
+            'posts_per_page' => 3,
+            'paged' => $_POST['paged'] ?: 1,
+            'order' => 'ASC',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'park_category',
+                    'terms' => $_POST['category_id'],
+                    'include_children' => false
+                ],
+            ],
+        );
+    } else {
+        $args = array(
+            'post_type' => 'parks',
+            'post_status' => 'publish',
+            'posts_per_page' => 3,
+            'paged' => $_POST['paged'] ?: 1,
+            'order' => 'ASC'
+        );
+    }
+
+    $blog_post = new WP_Query($args);
+    $arr = [];
+    $arr['blogPost'] = $blog_post;
+
+    get_template_part("template-parts/home/template", "post", $arr);
+
+    wp_reset_query();
+    exit();
+
+}
+
+add_action( 'wp_ajax_post_park_load', 'post_park_load' );
+add_action( 'wp_ajax_nopriv_post_park_load', 'post_park_load' );
