@@ -130,6 +130,35 @@ function parks_post() {
 }
 add_action( 'init', 'parks_post' );
 
+
+// add metabox
+add_action('add_meta_boxes', 'park_custom_box');
+
+function park_custom_box(){
+    $screens = [ 'parks' ];
+    add_meta_box( 'park_sectionid', 'Park location', 'location_meta_box_callback', $screens );
+}
+
+function location_meta_box_callback( $post, $meta ){
+    $screens = $meta['args'];
+    $value = get_post_meta( $post->ID, '_location', 1 );
+    echo '<label for="location_park">' . "Please add link to map" . '</label> ';
+    echo '<input type="text" id="location_park" name="location_park" value="'. $value .'" size="100%" />';
+}
+
+add_action( 'save_post', 'save_location_meta_box_field' );
+
+function save_location_meta_box_field( $post_id ) {
+    if ( ! isset( $_POST['location_park'] ) )
+        return;
+    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+        return;
+    if( ! current_user_can( 'edit_post', $post_id ) )
+        return;
+    $my_data = sanitize_text_field( $_POST['location_park'] );
+    update_post_meta( $post_id, '_location', $my_data );
+}
+
 //AJAX
 
 function post_park_load() {
@@ -171,3 +200,11 @@ function post_park_load() {
 
 add_action( 'wp_ajax_post_park_load', 'post_park_load' );
 add_action( 'wp_ajax_nopriv_post_park_load', 'post_park_load' );
+
+//translation
+
+//function translation_of_theme(){
+//    load_theme_textdomain( 'pl', false, get_template_directory_uri() . '/languages' );
+//}
+//
+//add_action( 'init', 'translation_of_theme' );

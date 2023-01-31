@@ -33,6 +33,13 @@ if (!empty($blog_post)):
                             }
                             ?>
                             <div><?= $description ?></div>
+                            <?php
+                            if( !empty( get_post_field('_location' ) ) ):
+                            ?>
+                            <a class="location" href="<?= get_post_field('_location') ?>" >Click here to see location</a>
+                            <?php
+                        endif;
+                            ?>
                         </div>
                         <a href="<?= get_permalink() ?>">
                             <button class="button-green-ligth-var">

@@ -14,7 +14,7 @@ $args = array(
 $blog_post = new WP_Query($args);
 $arr = [];
 $arr['blogPost'] = $blog_post;
-$cats = get_terms('park_category');
+$cats = get_terms('park_category') ?: '';
 
 get_header();
 ?>
