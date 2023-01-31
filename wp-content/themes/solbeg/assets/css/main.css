@@ -474,8 +474,9 @@ a.pagination:hover {
     margin: 0;
 }
 
-.location:hover {
-    color: #11a49b;
+.location {
+    color: #1d293f;
+    opacity: 0.6;
 }
 
 .location:hover {
