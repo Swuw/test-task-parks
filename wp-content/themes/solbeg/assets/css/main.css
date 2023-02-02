@@ -221,7 +221,7 @@ button:focus {
     flex-direction: column;
     align-items: center;
     margin-bottom: 2.75rem;
-    background-size: 100%;
+    background-size: auto;
 }
 
 @media (max-width: 767px) {
